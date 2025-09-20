@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Expat Business Banking Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .presentation-container {
+            width: 95%;
+            max-width: 1200px;
+            height: 85vh;
+            min-height: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            height: calc(100% - 80px);
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide h1 {
+            color: #1e3c72;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 15px;
+        }
+
+        .slide h2 {
+            color: #2a5298;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            border-left: 4px solid #1e3c72;
+            padding-left: 20px;
+        }
+
+        .slide h3 {
+            color: #1e3c72;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .slide p, .slide li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .slide ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 25px 0;
+        }
+
+        .pros, .cons {
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .pros {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .cons {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: #333;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            background: #1e3c72;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-weight: bold;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: #1e3c72;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* --- NEW STYLE FOR YELLOW LINK --- */
+        .cta-link {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #ffc107; /* Bright Yellow */
+            color: #1e3c72; /* Dark Blue Text for Contrast */
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-link:hover {
+            background-color: #ffda77; /* Lighter yellow on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        /* --- END OF NEW STYLE --- */
+
+        .navigation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1e3c72;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: #2a5298;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-indicator {
+            display: flex;
+            gap: 5px;
+            margin: 0 20px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .slide-counter {
+            color: white;
+            font-size: 1rem;
+            margin: 0 20px;
+        }
+
+        @media (max-width: 768px) {
+            .presentation-container {
+                width: 98%;
+                height: 90vh;
+            }
+
+            .slide {
+                padding: 20px;
+            }
+
+            .slide h1 {
+                font-size: 2rem;
+            }
+
+            .slide h2 {
+                font-size: 1.5rem;
+            }
+
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide active">
+            <h1>🏦 Optimal Banking Strategy</h1>
+            <div style="text-align: center; margin-top: 50px;">
+                <h2>For US Citizens with Small Businesses Living Abroad</h2>
+                <div class="highlight-box" style="margin: 50px auto; max-width: 600px;">
+                    <h3>The Hybrid Approach</h3>
+                    <p>Combining US banking infrastructure with strategic international payment solutions for optimal compliance, cost efficiency, and operational flexibility.</p>
+                </div>
+                <p style="font-size: 1.2rem; color: #666; margin-top: 40px;">
+                    Navigate FBAR, FATCA, and international banking challenges while maximizing your business efficiency and minimizing compliance burden.
+                </p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>🚫 The Challenge</h1>
+            <h2>Why Traditional Approaches Fall Short</h2>
+            
+            <div class="pros-cons">
+                <div class="cons">
+                    <h3>❌ Pure US Banking</h3>
+                    <ul>
+                        <li>Expensive international wire fees</li>
+                        <li>Poor exchange rates (3-4% markup)</li>
+                        <li>Difficulty receiving international payments</li>
+                        <li>Limited international accessibility</li>
+                        <li>Complex for foreign clients to pay</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h3>❌ Pure Foreign Banking</h3>
+                    <ul>
+                        <li>Complex FBAR/FATCA reporting</li>
+                        <li>Currency gain/loss tax calculations</li>
+                        <li>Loss of US banking relationships</li>
+                        <li>Difficulty with US vendors/clients</li>
+                        <li>Potential compliance penalties</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>💡 The Solution</h3>
+                <p>A hybrid approach that leverages the best of both worlds while minimizing compliance complexity and maximizing operational efficiency.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>⚖️ The Hybrid Strategy</h1>
+            <h2>Best of Both Worlds Approach</h2>
+
+            <div class="highlight-box">
+                <h3>🎯 Core Principle</h3>
+                <p>Use US banking as your primary business infrastructure and international solutions as efficient payment processors and currency converters.</p>
+            </div>
+
+            <h3>🏛️ Primary US Business Banking</h3>
+            <ul>
+                <li><strong>Purpose:</strong> Main business account and financial hub</li>
+                <li><strong>Benefits:</strong> No FBAR reporting, maintains US relationships, easier tax compliance</li>
+                <li><strong>Recommended:</strong> Chase, Bank of America, or Wells Fargo business accounts</li>
+                <li><strong>Use for:</strong> US payments, business expenses, payroll, tax payments</li>
+            </ul>
+
+            <h3>💳 Strategic International Payments (Wise)</h3>
+            <ul>
+                <li><strong>Purpose:</strong> International payment processor and currency converter</li>
+                <li><strong>Benefits:</strong> Better exchange rates, local bank details, lower fees</li>
+                <li><strong>Strategy:</strong> Keep balances low, transfer to US account regularly</li>
+                <li><strong>Use for:</strong> Receiving international payments, currency conversion</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h1>🔄 Implementation Workflow</h1>
+            <h2>Step-by-Step Process</h2>
+
+            <div class="workflow-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Receive Payment</h3>
+                    <p>International clients pay into your Wise account using local bank details</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Convert Currency</h3>
+                    <p>Convert to USD in Wise when exchange rates are favorable</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Transfer to US</h3>
+                    <p>Move USD to your US business account weekly or monthly</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Operate from US</h3>
+                    <p>Pay US expenses, taxes, and vendors from US business account</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Local Expenses</h3>
+                    <p>Use Wise debit card for small local business expenses abroad</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>⏰ Timing Strategy</h3>
+                <p><strong>Key Principle:</strong> Keep Wise as a transit account, not a storage account. Transfer to US regularly to minimize FBAR exposure and simplify compliance.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>📊 FBAR & FATCA Strategy</h1>
+            <h2>Minimizing Compliance Burden</h2>
+
+            <div class="pros-cons">
+                <div class="pros">
+                    <h3>✅ US Accounts (No Reporting)</h3>
+                    <ul>
+                        <li>Primary business account exempt</li>
+                        <li>No FBAR filing required</li>
+                        <li>No Form 8938 requirements</li>
+                        <li>Standard US tax reporting only</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h3>⚠️ Wise Accounts (Reporting Required)</h3>
+                    <ul>
+                        <li>Must report if >$10K aggregate balance</li>
+                        <li>Form 114 (FBAR) by October 15</li>
+                        <li>Form 8938 if higher thresholds met</li>
+                        <li>Track currency gains/losses</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🛡️ Compliance Minimization Strategy</h3>
+                <ul>
+                    <li><strong>Keep Wise balances under $10K:</strong> Avoid FBAR requirements entirely</li>
+                    <li><strong>Regular transfers:</strong> Move money to US account weekly/monthly</li>
+                    <li><strong>Document everything:</strong> Maintain detailed transaction records</li>
+                    <li><strong>Professional help:</strong> Consider CPA familiar with expat taxation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>👤 Personal Banking Strategy</h1>
+            <h2>Complementing Your Business Setup</h2>
+
+            <h3>🏦 Recommended Personal Accounts</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Account Type</th>
+                        <th>Purpose</th>
+                        <th>Benefits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Charles Schwab Checking</strong></td>
+                        <td>Primary US personal account</td>
+                        <td>No foreign ATM fees, worldwide access</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Local Foreign Account</strong></td>
+                        <td>Daily living expenses</td>
+                        <td>Rent, utilities, local regulatory compliance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wise Personal</strong></td>
+                        <td>Multi-currency management</td>
+                        <td>Travel, international purchases, currency exchange</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <h3>💡 Personal Strategy Tips</h3>
+                <ul>
+                    <li><strong>FEIE Planning:</strong> Structure to qualify for Foreign Earned Income Exclusion</li>
+                    <li><strong>Credit Cards:</strong> Use multi-currency cards (Capital One, Chase Sapphire)</li>
+                    <li><strong>Investment Accounts:</strong> Maintain US brokerage for retirement planning</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>🏢 Business Structure Optimization</h1>
+            <h2>Legal Entity Considerations</h2>
+
+            <h3>🔧 Recommended Structure</h3>
+            <div class="highlight-box">
+                <h3>Single-Member LLC with S-Corp Election</h3>
+                <ul>
+                    <li><strong>LLC Benefits:</strong> Liability protection, operational flexibility</li>
+                    <li><strong>S-Corp Election:</strong> Payroll tax savings on profits above reasonable salary</li>
+                    <li><strong>Pass-through taxation:</strong> Avoid double taxation complexities</li>
+                    <li><strong>Delaware LLC:</strong> Consider for banking access and privacy</li>
+                </ul>
+            </div>
+
+            <h3>📋 Tax Strategy Components</h3>
+            <ul>
+                <li><strong>Foreign Earned Income Exclusion (FEIE):</strong> Up to $120,000+ exclusion for 2024</li>
+                <li><strong>Foreign Tax Credit:</strong> Credit for taxes paid to foreign governments</li>
+                <li><strong>Reasonable Salary:</strong> Pay yourself W-2 wages for S-Corp election</li>
+                <li><strong>Business Deductions:</strong> Home office, travel, equipment expenses</li>
+            </ul>
+
+            <div class="pros-cons">
+                <div class="pros">
+                    <h3>✅ Avoid These Structures</h3>
+                    <ul>
+                        <li>Foreign corporations (CFC rules)</li>
+                        <li>Complex multi-entity setups</li>
+                        <li>PFIC investments</li>
+                        <li>Foreign partnerships</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>📅 Implementation Timeline</h1>
+            <h2>Getting Started in 30-60 Days</h2>
+
+            <div class="workflow-steps">
+                <div class="step">
+                    <div class="step-number">W1</div>
+                    <h3>Week 1-2</h3>
+                    <p><strong>US Business Banking</strong><br>
+                    Open business checking account with major US bank. Research EIN requirements if needed.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">W2</div>
+                    <h3>Week 2-3</h3>
+                    <p><strong>Business Structure</strong><br>
+                    File LLC formation, obtain EIN, consider S-Corp election timing for tax year.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">W3</div>
+                    <h3>Week 3-4</h3>
+                    <p><strong>International Setup</strong><br>
+                    Open Wise business account, verify identity, get local bank details for key currencies.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">W4</div>
+                    <h3>Week 4-6</h3>
+                    <p><strong>Integration & Testing</strong><br>
+                    Test payment flows, set up regular transfer schedule, configure accounting systems.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">W6</div>
+                    <h3>Week 6-8</h3>
+                    <p><strong>Optimization</strong><br>
+                    Fine-tune processes, train team/clients on new payment methods, monitor compliance.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🔧 Professional Support Needed</h3>
+                <ul>
+                    <li><strong>CPA:</strong> Expat tax specialist for ongoing compliance</li>
+                    <li><strong>Attorney:</strong> Business formation and international tax planning</li>
+                    <li><strong>Banking Specialist:</strong> Relationship manager at chosen US bank</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>💰 Cost-Benefit Analysis</h1>
+            <h2>Financial Impact of the Hybrid Approach</h2>
+
+            <h3>💸 Cost Comparison (Annual for $200K Revenue)</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Approach</th>
+                        <th>Exchange Rate Loss</th>
+                        <th>Wire Fees</th>
+                        <th>Compliance Costs</th>
+                        <th>Total Annual Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pure US Banking</strong></td>
+                        <td>$6,000-8,000</td>
+                        <td>$2,400</td>
+                        <td>$1,000</td>
+                        <td><strong>$9,400-11,400</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pure Foreign Banking</strong></td>
+                        <td>$1,000</td>
+                        <td>$800</td>
+                        <td>$3,000-5,000</td>
+                        <td><strong>$4,800-6,800</strong></td>
+                    </tr>
+                    <tr style="background: #d4edda;">
+                        <td><strong>Hybrid Approach</strong></td>
+                        <td>$1,200</td>
+                        <td>$600</td>
+                        <td>$1,500</td>
+                        <td><strong>$3,300</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pros-cons">
+                <div class="pros">
+                    <h3>✅ Hybrid Benefits</h3>
+                    <ul>
+                        <li>Save $6,000+ annually vs pure US banking</li>
+                        <li>Reduce compliance complexity by 60%</li>
+                        <li>Maintain US banking relationships</li>
+                        <li>Better client payment experience</li>
+                        <li>Operational flexibility</li>
+                    </ul>
+                </div>
+                <div class="pros">
+                    <h3>📈 Additional Benefits</h3>
+                    <ul>
+                        <li>Reduced administrative time</li>
+                        <li>Lower risk of compliance errors</li>
+                        <li>Improved cash flow management</li>
+                        <li>Better currency risk control</li>
+                        <li>Scalable as business grows</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>🚀 Next Steps</h1>
+            <h2>Your Implementation Action Plan</h2>
+
+            <div class="highlight-box">
+                <h3>🎯 Immediate Actions (This Week)</h3>
+                <ol style="font-size: 1.1rem; line-height: 1.8;">
+                    <li><strong>Assess Current Situation:</strong> Document existing accounts and compliance requirements</li>
+                    <li><strong>Choose US Bank:</strong> Research and select primary business banking partner</li>
+                    <li><strong>Professional Team:</strong> Identify CPA and attorney for business structure</li>
+                </ol>
+            </div>
+
+            <div class="workflow-steps">
+                <div class="step">
+                    <div class="step-number">📋</div>
+                    <h3>Preparation Checklist</h3>
+                    <ul>
+                        <li>Business plan summary</li>
+                        <li>Personal/business credit reports</li>
+                        <li>Current tax returns</li>
+                        <li>Projected revenue estimates</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <div class="step-number">🏦</div>
+                    <h3>Banking Requirements</h3>
+                    <ul>
+                        <li>US address for correspondence</li>
+                        <li>Initial deposit funds</li>
+                        <li>Business documentation</li>
+                        <li>Identity verification</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <div class="step-number">💻</div>
+                    <h3>System Setup</h3>
+                    <ul>
+                        <li>Accounting software configuration</li>
+                        <li>Payment processing integration</li>
+                        <li>Client notification templates</li>
+                        <li>Compliance tracking system</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="font-size: 1.3rem; color: #1e3c72; font-weight: bold;">
+                    Transform your international business banking today!
+                </p>
+                <p style="font-size: 1.1rem; color: #666; margin-top: 15px;">
+                    Start with one step and build momentum toward a compliant, efficient banking strategy.
+                </p>
+                <a href="https://gorillaether.com/digital-nomad/" class="cta-link" target="_blank" rel="noopener noreferrer">
+                    Explore Digital Nomad Resources
+                </a>
+                 </div>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+            <div class="slide-indicator" id="indicators"></div>
+            <div class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">10</span>
+            </div>
+            <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        // Initialize indicators
+        function initializeIndicators() {
+            const indicatorContainer = document.getElementById('indicators');
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                indicator.onclick = () => goToSlide(i);
+                indicatorContainer.appendChild(indicator);
+            }
+            updateIndicators();
+        }
+        
+        // Update slide display
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            
+            document.getElementById('currentSlide').textContent = index + 1;
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === totalSlides - 1;
+            
+            updateIndicators();
+        }
+        
+        // Update indicators
+        function updateIndicators() {
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === currentSlideIndex);
+            });
+        }
+        
+        // Change slide
+        function changeSlide(direction) {
+            const newIndex = currentSlideIndex + direction;
+            if (newIndex >= 0 && newIndex < totalSlides) {
+                currentSlideIndex = newIndex;
+                showSlide(currentSlideIndex);
+            }
+        }
+        
+        // Go to specific slide
+        function goToSlide(index) {
+            if (index >= 0 && index < totalSlides) {
+                currentSlideIndex = index;
+                showSlide(currentSlideIndex);
+            }
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key >= '1' && e.key <= '9') {
+                const slideNum = parseInt(e.key) - 1;
+                if (slideNum < totalSlides) goToSlide(slideNum);
+            }
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('totalSlides').textContent = totalSlides;
+            initializeIndicators();
+            showSlide(0);
+        });
+    </script>
+</body>
+</html>
